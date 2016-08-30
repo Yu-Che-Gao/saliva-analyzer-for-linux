@@ -8,6 +8,8 @@
 
 ##Quick Start
 
+Start the terminal and enter the instruction like below:
+
 <pre>
     cd /var/www/html  # path to the folder of html page
     sudo git clone https://github.com/Yu-Che-Gao/saliva-analyzer-for-linux.git
