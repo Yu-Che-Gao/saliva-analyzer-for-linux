@@ -4,6 +4,7 @@
 
 1. Lamp Server
 2. PhpMyAdmin
+3. import saliva20160830.sql into phpmyadmin
 
 ##Quick Start
 
