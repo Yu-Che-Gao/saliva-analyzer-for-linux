@@ -34,7 +34,7 @@
 		$xmlArray = get_object_vars($xml);
 		$keys = array_keys($xmlArray);
 
-		exec('simple_edge_detection_sobel.exe '.$xmlArray['image_file'].' 100 300 25',$outputResult);
+		exec('./saliva_analyzer_linux.out '.$xmlArray['image_file'].' 100 300 25',$outputResult);
 		$whitePixels=$outputResult[0];
 		$whiteDensity=$whitePixels/262144; //512*512
 		$ferningPattern='';
@@ -44,7 +44,7 @@
 		if($result) {
 			if(mysqli_num_rows($result)==0) { //如果沒有這個user
 				insertCustomer($conn, $xmlArray['tel_No'], $xmlArray['user_Name'], $xmlArray['phone_Type'], $xmlArray['Country'], $xmlArray['mc_startDate'], $xmlArray['mc_Interval'], 1, $threshold1, $threshold2);
-				$ferningPattern=getFerningPattern($whiteDensity, $threshold1, $theshold2);
+				$ferningPattern=getFerningPattern($whiteDensity, $threshold1, $threshold2);
 				insertImage($conn, $xmlArray['image_file'], date('Y-m-d'), $whiteDensity, $ferningPattern, mysqli_insert_id($conn));
 			} else { //如果已有這個user
 				if($row['mc_start_date']==$xmlArray['mc_startDate']) { //如果mc起始日相同
